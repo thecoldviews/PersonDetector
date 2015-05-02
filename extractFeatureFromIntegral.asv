@@ -1,0 +1,14 @@
+function featurevector= extractFeatureFromIntegral(integralImage,x,y),
+    blockx=int32(x/8);
+    blocky=int32(y/8);
+    featurevector=[];
+    for j=1:15,
+        for k=1:7,
+            featurevector=[featurevector, reshape(integralImage(blocky+j,blockx+k,:),[1,9])];
+        end
+    end
+    figure(1);
+    clf;
+    subplot(1,2,1), subimage(hogDraw(integralImage(blocky:blocky+15,blockx:blockx+7,:)));
+    subplot(1,2,2), subimage(Im);
+end
